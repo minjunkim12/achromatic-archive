@@ -68,10 +68,11 @@ img { max-width:100%; display:block }
   flex-shrink:0;
 }
 .icon-rail-item {
-  width:44px; height:36px;
-  border-radius:6px;
+  width:44px; height:52px;
+  border-radius:8px;
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
+  gap:4px;
   cursor:pointer;
   transition:background var(--dMicro);
   position:relative;
@@ -79,7 +80,14 @@ img { max-width:100%; display:block }
 }
 .icon-rail-item:hover:not(.icon-rail-item--soon) { background:var(--s200) }
 .icon-rail-item.active { background:var(--bg); box-shadow:var(--shSm) }
-.icon-rail-item--soon { opacity:.3; cursor:default }
+.icon-rail-item--soon { opacity:.28; cursor:default }
+.icon-rail-icon {
+  width:20px; height:20px;
+  stroke:var(--tx3); fill:none;
+  stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;
+  display:block; flex-shrink:0;
+}
+.icon-rail-item.active .icon-rail-icon { stroke:var(--p) }
 .icon-rail-label {
   font-size:9px; font-weight:600;
   color:var(--tx3); letter-spacing:-.01em;
@@ -114,16 +122,39 @@ img { max-width:100%; display:block }
 .sidebar-logo {
   display:flex;
   align-items:center;
-  gap:8px;
-  padding:16px 16px 12px;
+  gap:10px;
+  padding:14px 14px 12px;
   border-bottom:1px solid var(--bd);
   flex-shrink:0;
 }
-.sidebar-brand { display:flex; align-items:center; gap:6px; font-size:14px; font-weight:700; letter-spacing:-.01em; color:var(--tx1) }
+.sidebar-logo-icon {
+  width:32px; height:32px;
+  background:var(--p);
+  border-radius:9px;
+  display:grid; place-items:center;
+  flex-shrink:0;
+}
+.sidebar-logo-icon svg {
+  width:17px; height:17px;
+  stroke:#fff; fill:none;
+  stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+}
+.sidebar-logo-text { flex:1; min-width:0 }
+.sidebar-brand {
+  display:flex; align-items:center; gap:6px;
+  font-size:14px; font-weight:800;
+  letter-spacing:-.02em; color:var(--tx1);
+  line-height:1.2;
+}
+.sidebar-brand-sub {
+  font-size:10px; font-weight:500; color:var(--tx4);
+  margin-top:1px;
+}
 .sidebar-brand-beta {
-  font-size:10px; font-weight:600;
+  font-size:9px; font-weight:700;
   background:var(--pt); color:var(--p);
   padding:1px 6px; border-radius:4px;
+  letter-spacing:.02em;
 }
 
 /* Nav area */
@@ -319,47 +350,60 @@ img { max-width:100%; display:block }
 /* ═══ BLOCK CARD ══════════════════════════════════════════════ */
 .block-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:16px;
 }
 .blk {
-  border-radius:var(--rM);
+  border-radius:var(--rL);
   background:var(--bg);
   border:1px solid var(--bd);
   overflow:hidden;
   transition:border-color var(--dBase), box-shadow var(--dBase);
+  cursor:pointer;
 }
 .blk:hover {
   border-color:var(--s300);
-  box-shadow:var(--shCard);
+  box-shadow:var(--shPop);
 }
 
 /* Card preview body */
 .blk-body {
-  padding:20px;
-  min-height:160px;
+  padding:24px 20px;
+  min-height:180px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#fff;
+  background:var(--s50);
   position:relative;
   overflow:hidden;
 }
 .blk-body--tall { min-height:220px }
 .blk-body--nav { padding:0; background:var(--s50); min-height:0 }
 
-/* Card meta bar */
-.blk-meta {
-  padding:10px 12px;
+/* Hover overlay — buttons appear on top of preview */
+.blk-overlay {
+  position:absolute; inset:0;
+  background:rgba(15,23,42,.42);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  opacity:0;
+  transition:opacity var(--dBase);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.blk:hover .blk-overlay { opacity:1 }
+
+/* Card footer — name only */
+.blk-footer {
+  padding:11px 14px 13px;
+  border-top:1px solid var(--bd);
+  background:var(--bg);
   display:flex;
   align-items:center;
   justify-content:space-between;
-  border-top:1px solid var(--bd);
   gap:8px;
-  background:var(--bg);
 }
 .blk-name {
-  font-size:12px;
+  font-size:13px;
   font-weight:600;
   color:var(--tx1);
   flex:1;
@@ -367,38 +411,54 @@ img { max-width:100%; display:block }
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+  letter-spacing:-.01em;
 }
 .blk-badge {
   font-size:10px;
   font-weight:500;
   color:var(--tx4);
   background:var(--s100);
-  padding:2px 6px;
-  border-radius:3px;
+  padding:2px 7px;
+  border-radius:var(--rPill);
   flex-shrink:0;
 }
 
-/* Copy button */
+/* Copy button (inside overlay) */
 .copy-btn {
   display:flex;
   align-items:center;
-  gap:4px;
-  padding:5px 10px;
-  background:var(--p);
-  color:#fff;
-  border-radius:var(--rS);
-  font-size:11px;
-  font-weight:600;
-  transition:background var(--dMicro);
+  gap:5px;
+  padding:8px 14px;
+  background:#fff;
+  color:var(--tx1);
+  border-radius:var(--rPill);
+  font-size:12px;
+  font-weight:700;
+  transition:background var(--dMicro), transform var(--dMicro);
   white-space:nowrap;
   flex-shrink:0;
+  box-shadow:var(--shCard);
 }
-.copy-btn:hover { background:var(--ph) }
+.copy-btn:hover { background:var(--p); color:#fff; transform:scale(1.03) }
 .copy-btn svg {
-  width:10px; height:10px;
+  width:11px; height:11px;
   stroke:currentColor; fill:none;
   stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;
 }
+
+/* Preview icon button (secondary) */
+.preview-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:34px; height:34px;
+  background:rgba(255,255,255,.18);
+  border-radius:50%;
+  font-size:15px;
+  transition:background var(--dMicro);
+  flex-shrink:0;
+}
+.preview-btn:hover { background:rgba(255,255,255,.32) }
 
 /* ═══ BLOCK PREVIEW INTERNAL STYLES (inside card) ═══════════ */
 /* — used by the mini-component previews — */
@@ -718,16 +778,20 @@ textarea.fld-inp { resize:vertical; min-height:68px; line-height:1.5 }
   <!-- ════ ICON RAIL ════ -->
   <nav class="icon-rail">
     <div class="icon-rail-item active" title="우피 블록">
-      <span class="icon-rail-label">우피</span>
+      <svg class="icon-rail-icon" viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+      <span class="icon-rail-label">블록</span>
     </div>
-    <div class="icon-rail-item icon-rail-item--soon" title="토스피드 블록">
+    <div class="icon-rail-item icon-rail-item--soon" title="준비 중">
+      <svg class="icon-rail-icon" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h8"/></svg>
       <span class="icon-rail-label">피드</span>
     </div>
     <div class="icon-rail-divider"></div>
-    <div class="icon-rail-item icon-rail-item--soon" title="토스 스타일 (준비 중)">
+    <div class="icon-rail-item icon-rail-item--soon" title="준비 중">
+      <svg class="icon-rail-icon" viewBox="0 0 20 20"><rect x="2" y="5" width="16" height="11" rx="2"/><path d="M6 5V4a2 2 0 014 0v1M10 10v2"/></svg>
       <span class="icon-rail-label">토스</span>
     </div>
-    <div class="icon-rail-item icon-rail-item--soon" title="애플 스타일 (준비 중)">
+    <div class="icon-rail-item icon-rail-item--soon" title="준비 중">
+      <svg class="icon-rail-icon" viewBox="0 0 20 20"><path d="M14 4c-.5-1.2-1.5-2-2.5-2-1.5 0-2 1-3 1S7 2 5.5 2C4 2 2.5 3.5 2.5 5.5c0 4 3.5 8.5 5.5 9.5.5.3 1 .3 1.5 0 .8-.4 2.5-2 3.8-4.5"/><path d="M12.5 2c1 0 2 .8 2 2 0 .8-.5 1.5-1 2"/></svg>
       <span class="icon-rail-label">애플</span>
     </div>
     <div class="icon-rail-spacer"></div>
@@ -737,7 +801,13 @@ textarea.fld-inp { resize:vertical; min-height:68px; line-height:1.5 }
   <aside class="sidebar" id="sidebar">
 
     <div class="sidebar-logo">
-      <span class="sidebar-brand">Oopy Blocks<span class="sidebar-brand-beta">Beta</span></span>
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+      </div>
+      <div class="sidebar-logo-text">
+        <div class="sidebar-brand">Oopy Blocks <span class="sidebar-brand-beta">BETA</span></div>
+        <div class="sidebar-brand-sub">우피 HTML 블록 라이브러리</div>
+      </div>
     </div>
 
     <!-- Search -->
@@ -792,23 +862,16 @@ textarea.fld-inp { resize:vertical; min-height:68px; line-height:1.5 }
 
       </div>
 
-      <!-- 토스피드 스타일 그룹 -->
+      <!-- 스타일 컬렉션 그룹 -->
       <div class="sidebar-group">
-        <div class="sidebar-group-label">토스피드 스타일</div>
+        <div class="sidebar-group-label">스타일</div>
 
         <div class="sidebar-nav-item" data-section="tossfeed" onclick="navigate('tossfeed')">
           <span class="sidebar-nav-label">토스피드</span>
           <span class="sidebar-nav-count" id="count-tossfeed">0</span>
         </div>
 
-      </div>
-
-      <!-- 앱인토스 스타일 그룹 -->
-      <div class="sidebar-group">
-        <div class="sidebar-group-label">앱인토스 스타일</div>
-
         <div class="sidebar-nav-item" data-section="ait" onclick="navigate('ait')">
-          <span class="sidebar-nav-icon">💳</span>
           <span class="sidebar-nav-label">앱인토스</span>
           <span class="sidebar-nav-count" id="count-ait">0</span>
         </div>
@@ -2400,16 +2463,16 @@ function createCard(blockDef) {
   card.innerHTML = `
     <div class="blk-body${blockDef.bodyClass ? ' ' + blockDef.bodyClass : ''}">
       ${blockDef.preview || ''}
-    </div>
-    <div class="blk-meta">
-      <div class="blk-name">${blockDef.name}</div>
-      <div style="display:flex;gap:6px;align-items:center">
-        <span class="blk-badge">${blockDef.badge || ''}</span>
+      <div class="blk-overlay">
         <button class="copy-btn" onclick="openModal('${blockDef.id}')">
           <svg viewBox="0 0 12 12"><rect x="4" y="4" width="7" height="7" rx="1.5"/><path d="M2 8H1.5A1.5 1.5 0 010 6.5v-5A1.5 1.5 0 011.5 0h5A1.5 1.5 0 018 1.5V2"/></svg>
           편집 후 복사
         </button>
       </div>
+    </div>
+    <div class="blk-footer">
+      <div class="blk-name">${blockDef.name}</div>
+      <span class="blk-badge">${blockDef.badge || ''}</span>
     </div>
   `;
   return card;
