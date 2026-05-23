@@ -1,5 +1,5 @@
 {
-  "redirects": [
-    { "source": "/", "destination": "/oopy-blocks.html", "permanent": false }
+  "rewrites": [
+    { "source": "/", "destination": "/oopy-blocks.html" }
   ]
 }
