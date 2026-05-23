@@ -803,6 +803,18 @@ textarea.fld-inp { resize:vertical; min-height:68px; line-height:1.5 }
 
       </div>
 
+      <!-- 앱인토스 스타일 그룹 -->
+      <div class="sidebar-group">
+        <div class="sidebar-group-label">앱인토스 스타일</div>
+
+        <div class="sidebar-nav-item" data-section="ait" onclick="navigate('ait')">
+          <span class="sidebar-nav-icon">💳</span>
+          <span class="sidebar-nav-label">앱인토스</span>
+          <span class="sidebar-nav-count" id="count-ait">0</span>
+        </div>
+
+      </div>
+
       <div class="sidebar-divider"></div>
 
       <!-- 스타일 컬렉션 (확장 예정) -->
@@ -810,8 +822,8 @@ textarea.fld-inp { resize:vertical; min-height:68px; line-height:1.5 }
         <div class="sidebar-group-label">스타일 컬렉션</div>
 
         <div class="sidebar-nav-item sidebar-nav-item--soon">
-          <span class="sidebar-nav-icon">💳</span>
-          <span class="sidebar-nav-label">토스</span>
+          <span class="sidebar-nav-icon">🍎</span>
+          <span class="sidebar-nav-label">애플</span>
           <span class="sidebar-nav-soon">SOON</span>
         </div>
 
@@ -1133,6 +1145,44 @@ const BLOCK_SECTIONS = [
       /* 15 */
       { id:'tf-cta-full', name:'CTA — 풀버튼', badge:'CTA', group:'본문',
         preview:`<div style="width:100%;text-align:center;padding:8px 0;font-family:inherit"><div style="font-size:12px;color:#4E5968;line-height:1.65;margin-bottom:13px">토스에서는 내가 놓쳤던 세금이 있는지<br>쉽고 빠르게 확인할 수 있어요.</div><a href="#" style="display:block;padding:12px;background:#3182F6;color:#fff;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:background .15s">지금 바로 확인하기</a></div>`
+      },
+    ]
+  },
+
+  /* ════ 앱인토스 스타일 ════ */
+  { id:'ait', title:'앱인토스 스타일', desc:'toss.im/apps-in-toss 디자인 패턴 — 히어로·수치·마퀴·타임라인·메이커 카드·FAQ 등',
+    blocks:[
+      { id:'ait-hero', name:'앱인토스 — 히어로 다크', badge:'히어로', group:'히어로',
+        bodyClass:'blk-body--tall',
+        preview:`<div style="width:100%;height:100%;background:linear-gradient(160deg,#0f172a 0%,#1e293b 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;text-align:center;font-family:inherit"><div style="display:inline-block;background:rgba(49,130,246,.2);border:1px solid rgba(49,130,246,.4);color:#60a5fa;font-size:9px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:12px">🚀 앱인토스</div><div style="font-size:16px;font-weight:900;color:#f8fafc;line-height:1.25;letter-spacing:-.025em;margin-bottom:8px">아이디어만 있다면<br>누구나 메이커가 되는 세상</div><div style="font-size:9px;color:#94a3b8;margin-bottom:14px;line-height:1.5">계약 없이, 지금 바로 시작하세요</div><div style="padding:7px 18px;background:#3182F6;color:#fff;border-radius:999px;font-size:10px;font-weight:700">콘솔 가입하기</div></div>`
+      },
+      { id:'ait-logo-roll', name:'앱인토스 — 미니앱 로고 마퀴', badge:'마퀴', group:'레이아웃',
+        preview:`<div style="width:100%;overflow:hidden;font-family:inherit;padding:8px 0"><div style="font-size:8px;font-weight:600;color:#8B95A1;text-align:center;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px">출시된 미니앱들</div><div style="display:flex;gap:8px;animation:ait-pv-scroll 6s linear infinite;width:max-content"><style>@keyframes ait-pv-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>${['🐱','🍲','🎮','🐕','🧘','🎣','🏋️','🏠','🐾','🐱','🍲','🎮','🐕','🧘','🎣','🏋️','🏠','🐾'].map(e=>`<div style="width:36px;height:36px;border-radius:10px;background:#F2F4F6;border:1px solid #E5E8EB;display:grid;place-items:center;font-size:16px;flex-shrink:0">${e}</div>`).join('')}</div></div>`
+      },
+      { id:'ait-stat-trio', name:'앱인토스 — 수치 3종 카드', badge:'통계', group:'통계/수치',
+        preview:`<div style="width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E5E8EB;border:1px solid #E5E8EB;border-radius:12px;overflow:hidden;font-family:inherit">${[['300+','출시 미니앱'],['50%↑','1인 개발자'],['3일','첫 매출']].map(([n,l])=>`<div style="background:#fff;padding:16px 8px;text-align:center"><div style="font-size:18px;font-weight:900;color:#0064FF;letter-spacing:-.04em">${n}</div><div style="font-size:9px;font-weight:700;color:#191F28;margin-top:3px">${l}</div></div>`).join('')}</div>`
+      },
+      { id:'ait-platform-intro', name:'앱인토스 — 플랫폼 정의 블록', badge:'콘텐츠', group:'콘텐츠',
+        preview:`<div style="width:100%;text-align:center;padding:12px;font-family:inherit"><div style="font-size:8px;font-weight:700;color:#3182F6;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">앱인토스란?</div><div style="font-size:12px;font-weight:800;color:#191F28;line-height:1.5;letter-spacing:-.015em;margin-bottom:12px">누구나 토스 안에 미니앱을 올리고, 수익을 만들 수 있는 오픈 플랫폼</div><div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center">${['계약 없음','누구나','빠른 수익화','3,000만 유저'].map(c=>`<span style="background:#fff;border:1px solid #E5E8EB;padding:3px 8px;border-radius:999px;font-size:8px;font-weight:600;color:#333D4B">${c}</span>`).join('')}</div></div>`
+      },
+      { id:'ait-success-rate', name:'앱인토스 — 71% 성공 지표', badge:'통계', group:'통계/수치',
+        preview:`<div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center;padding:12px;font-family:inherit"><div><div style="font-size:40px;font-weight:900;color:#0064FF;letter-spacing:-.05em;line-height:1">71%</div><div style="font-size:10px;font-weight:800;color:#191F28;line-height:1.35;margin-top:6px">1인 메이커 10명 중 7명<br>출시 3일 만에 첫 매출</div></div><div style="display:flex;flex-direction:column;gap:7px"><div style="background:#F2F4F6;border-radius:8px;padding:9px 10px"><div style="font-size:8px;color:#8B95A1">첫 매출까지</div><div style="font-size:14px;font-weight:900;color:#191F28">3일</div></div><div style="background:#F2F4F6;border-radius:8px;padding:9px 10px"><div style="font-size:8px;color:#8B95A1">성공률</div><div style="font-size:14px;font-weight:900;color:#191F28">71%</div></div></div></div>`
+      },
+      { id:'ait-launch-days', name:'앱인토스 — 5일 출시 타임라인', badge:'타임라인', group:'콘텐츠',
+        preview:`<div style="width:100%;padding:10px;font-family:inherit"><div style="text-align:center;font-size:10px;font-weight:800;color:#191F28;margin-bottom:14px">미니앱 등록부터 출시까지 평균 5일</div><div style="display:flex;justify-content:center;gap:0">${[['1','아이디어','Day 1'],['2','개발','Day 2-3'],['3','심사','Day 4'],['4','출시','Day 5']].map(([n,t,d],i,a)=>`<div style="text-align:center;flex:1;position:relative">${i<a.length-1?`<div style="position:absolute;top:13px;left:60%;right:-10%;height:2px;background:#E5E8EB;z-index:0"></div>`:''}  <div style="width:26px;height:26px;border-radius:50%;background:#0064FF;color:#fff;font-size:10px;font-weight:800;display:grid;place-items:center;margin:0 auto 5px;position:relative;z-index:1">${n}</div><div style="font-size:8px;font-weight:700;color:#191F28">${t}</div><div style="font-size:7px;color:#3182F6;font-weight:600">${d}</div></div>`).join('')}</div></div>`
+      },
+      { id:'ait-vibe-feature', name:'앱인토스 — 바이브코딩 피처 4종', badge:'피처', group:'콘텐츠',
+        preview:`<div style="width:100%;padding:10px;font-family:inherit"><div style="text-align:center;font-size:10px;font-weight:800;color:#191F28;margin-bottom:10px">개발을 몰라도 괜찮아요</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">${[['🤖','AI 바이브코딩','Claude·Codex MCP 지원'],['⚙️','로그인 SDK','복잡한 기능 한 줄로'],['🎨','토스 UX','기본 UI 템플릿 제공'],['🎮','H5 게임','즉시 출시·수익화']].map(([e,t,d])=>`<div style="border:1px solid #E5E8EB;border-radius:8px;padding:9px"><div style="font-size:16px;margin-bottom:5px">${e}</div><div style="font-size:9px;font-weight:700;color:#191F28;margin-bottom:2px">${t}</div><div style="font-size:8px;color:#4E5968;line-height:1.4">${d}</div></div>`).join('')}</div></div>`
+      },
+      { id:'ait-reach-banner', name:'앱인토스 — 3천만 유저 도달 배너', badge:'배너', group:'CTA',
+        preview:`<div style="width:100%;background:linear-gradient(135deg,#0064FF 0%,#5ba2f7 100%);padding:20px;text-align:center;border-radius:12px;font-family:inherit"><div style="font-size:32px;font-weight:900;color:rgba(255,255,255,.25);line-height:1;margin-bottom:4px">3,000만</div><div style="font-size:12px;font-weight:800;color:#fff;line-height:1.4;margin-bottom:10px">내가 만든 미니앱으로<br>유저를 빠르게 만나요</div><div style="display:inline-block;background:#fff;color:#0064FF;font-size:10px;font-weight:700;padding:6px 14px;border-radius:999px">콘솔 가입하기 →</div></div>`
+      },
+      { id:'ait-maker-card', name:'앱인토스 — 메이커 스토리 3종', badge:'카드', group:'카드',
+        preview:`<div style="width:100%;padding:8px;font-family:inherit"><div style="text-align:center;font-size:10px;font-weight:800;color:#191F28;margin-bottom:10px">누구나 미니앱을 만들 수 있어요</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px">${[['👩‍🏫','바이브코딩','학원 선생님이 게임 출시'],['👨‍💻','1인 개발자','창업 3개월, 첫 수익'],['🚀','비개발자','2달에 앱 21개 출시']].map(([e,t,d])=>`<div style="border:1px solid #E5E8EB;border-radius:10px;padding:10px 8px"><div style="font-size:18px;margin-bottom:6px">${e}</div><div style="font-size:8px;font-weight:700;color:#3182F6;background:#EEF3FD;display:inline-block;padding:1px 5px;border-radius:3px;margin-bottom:5px">${t}</div><div style="font-size:9px;font-weight:600;color:#191F28;line-height:1.4">${d}</div></div>`).join('')}</div></div>`
+      },
+      { id:'ait-faq', name:'앱인토스 — FAQ 아코디언', badge:'FAQ', group:'콘텐츠',
+        bodyClass:'blk-body--tall',
+        preview:`<div style="width:100%;font-family:inherit;padding:8px 0"><div style="text-align:center;font-size:11px;font-weight:800;color:#191F28;margin-bottom:12px">자주 묻는 질문</div>${[['수익화 방법은?','인앱광고, 인앱결제로 수익화 가능해요.'],['개발 몰라도 되나요?','네, 바이브코딩 환경 제공해요.'],['어떤 앱을?','게임·유틸·교육 등 다양한 카테고리'],['사업자 필요?','출시는 불필요, 수익화 시엔 필요']].map(([q,a])=>`<div style="border-bottom:1px solid #F2F4F6;padding:8px 0"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:10px;font-weight:700;color:#191F28">Q. ${q}</div><div style="font-size:9px;color:#8B95A1">▼</div></div></div>`).join('')}</div>`
       },
     ]
   },
@@ -1984,6 +2034,210 @@ details[open] summary{color:${v.color}}
   <a href="${v.link}" style="display:block;padding:14px;background:#3182F6;color:#fff;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none">${v.btn}</a>
 </div>`;
 }},
+
+
+/* ════════════════════════════════════════════════════════════
+   앱인토스 스타일 블록 (toss.im/apps-in-toss)
+   ════════════════════════════════════════════════════════════ */
+
+/* ── ait-hero ── */
+'ait-hero':{name:'앱인토스 — 히어로 다크',fields:[
+  {id:'badge',label:'배지 텍스트',type:'text',default:'🚀 앱인토스'},
+  {id:'h1',label:'메인 헤드라인',type:'text',default:'아이디어만 있다면\n누구나 메이커가 되는 세상'},
+  {id:'sub',label:'서브 텍스트',type:'text',default:'계약 없이, 지금 바로 시작하세요. 1인 개발자도, 바이브코더도 빠르게 출시하고 수익을 만들 수 있어요.'},
+  {id:'cta',label:'CTA 버튼',type:'text',default:'콘솔 가입하기'},
+  {id:'ctau',label:'CTA URL',type:'text',default:'https://apps-in-toss.toss.im/workspace'},
+  {id:'note',label:'보조 설명',type:'text',default:'3,000만 토스 유저에게 내 앱을 알리세요'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.ah{${FULL_BLEED}background:linear-gradient(160deg,#0f172a 0%,#1e293b 100%);padding:80px 24px;text-align:center;font-family:var(--font)}
+.ah__badge{display:inline-flex;align-items:center;gap:6px;background:rgba(49,130,246,.15);border:1px solid rgba(49,130,246,.3);color:#60a5fa;font-size:13px;font-weight:700;padding:6px 16px;border-radius:999px;margin-bottom:28px}
+.ah__h1{font-size:clamp(32px,6vw,56px);font-weight:900;color:#f8fafc;line-height:1.15;letter-spacing:-.03em;margin-bottom:20px;white-space:pre-line}
+.ah__sub{font-size:17px;color:#94a3b8;line-height:1.65;max-width:560px;margin:0 auto 36px}
+.ah__cta{display:inline-block;background:#3182F6;color:#fff;font-size:16px;font-weight:700;padding:14px 32px;border-radius:999px;text-decoration:none;transition:background .15s}
+.ah__cta:hover{background:#1d4ed8}.ah__note{margin-top:16px;font-size:13px;color:#64748b}
+</style>
+<div class="ah"><div class="ah__badge">${v.badge}</div><h1 class="ah__h1">${v.h1}</h1><p class="ah__sub">${v.sub}</p><a class="ah__cta" href="${v.ctau}">${v.cta}</a><p class="ah__note">${v.note}</p></div>`},
+
+/* ── ait-logo-roll ── */
+'ait-logo-roll':{name:'앱인토스 — 미니앱 로고 마퀴',fields:[
+  {id:'title',label:'섹션 제목',type:'text',default:'3,000만 유저가 사용하는 미니앱들'},
+  {id:'emojis',label:'앱 이모지 (쉼표 구분)',type:'text',default:'🐱,🍲,🎮,🐕,🧘,🎣,🏋️,🏠,🐾,👨‍🍳,🧑‍💻,💪,🐉,🍗,🎲'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.alr{font-family:var(--font);padding:40px 0;background:var(--bg);overflow:hidden}
+.alr__title{text-align:center;font-size:14px;font-weight:600;color:var(--tx4);letter-spacing:.04em;text-transform:uppercase;margin-bottom:24px}
+.alr__track{display:flex;gap:12px;animation:alr-scroll 20s linear infinite;width:max-content}
+.alr__item{width:52px;height:52px;border-radius:14px;background:var(--bgc);border:1px solid var(--bd);display:grid;place-items:center;font-size:24px;flex-shrink:0}
+@keyframes alr-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+</style>
+<div class="alr"><div class="alr__title">${v.title}</div><div class="alr__track">${(()=>{const arr=v.emojis.split(',').map(e=>e.trim());return [...arr,...arr].map(e=>`<div class="alr__item">${e}</div>`).join('')})()}</div></div>`},
+
+/* ── ait-stat-trio ── */
+'ait-stat-trio':{name:'앱인토스 — 수치 3종 카드',fields:[
+  {id:'s1n',label:'수치 1',type:'text',default:'300+'},{id:'s1l',label:'라벨 1',type:'text',default:'출시된 미니앱'},{id:'s1d',label:'설명 1',type:'text',default:'매일 새로운 미니앱이 출시되고 있어요'},
+  {id:'s2n',label:'수치 2',type:'text',default:'50%↑'},{id:'s2l',label:'라벨 2',type:'text',default:'1인 개발자 비율'},{id:'s2d',label:'설명 2',type:'text',default:'절반 이상이 혼자 시작했어요'},
+  {id:'s3n',label:'수치 3',type:'text',default:'3일'},{id:'s3l',label:'라벨 3',type:'text',default:'첫 매출 발생 평균'},{id:'s3d',label:'설명 3',type:'text',default:'빠르게 매출을 만들 수 있어요'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.ast{font-family:var(--font);padding:48px 24px;background:var(--bg)}
+.ast__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:var(--rXL);overflow:hidden;max-width:800px;margin:0 auto}
+@media(max-width:600px){.ast__grid{grid-template-columns:1fr}}
+.ast__cell{background:var(--bg);padding:32px 24px;text-align:center}
+.ast__num{font-size:40px;font-weight:900;color:var(--p);letter-spacing:-.04em;line-height:1;margin-bottom:8px}
+.ast__lbl{font-size:15px;font-weight:700;color:var(--tx1);margin-bottom:6px}
+.ast__desc{font-size:13px;color:var(--tx4);line-height:1.5}
+</style>
+<div class="ast"><div class="ast__grid"><div class="ast__cell"><div class="ast__num">${v.s1n}</div><div class="ast__lbl">${v.s1l}</div><div class="ast__desc">${v.s1d}</div></div><div class="ast__cell"><div class="ast__num">${v.s2n}</div><div class="ast__lbl">${v.s2l}</div><div class="ast__desc">${v.s2d}</div></div><div class="ast__cell"><div class="ast__num">${v.s3n}</div><div class="ast__lbl">${v.s3l}</div><div class="ast__desc">${v.s3d}</div></div></div></div>`},
+
+/* ── ait-platform-intro ── */
+'ait-platform-intro':{name:'앱인토스 — 플랫폼 정의 블록',fields:[
+  {id:'label',label:'상단 라벨',type:'text',default:'앱인토스란?'},
+  {id:'h1',label:'메인 텍스트',type:'text',default:'앱인토스는 누구나 토스 안에 미니앱을 올리고, 수익을 만들 수 있는 오픈 플랫폼이에요'},
+  {id:'chips',label:'키워드 칩 (쉼표 구분)',type:'text',default:'계약 없음,누구나 출시,빠른 수익화,3,000만 유저'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.api{font-family:var(--font);padding:64px 24px;background:var(--bgc);text-align:center}
+.api__label{font-size:13px;font-weight:700;color:var(--p);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.api__text{font-size:clamp(20px,3.5vw,30px);font-weight:800;color:var(--tx1);line-height:1.45;letter-spacing:-.025em;max-width:700px;margin:0 auto 32px}
+.api__chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.api__chip{background:var(--bg);border:1px solid var(--bd);padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--tx2)}
+</style>
+<div class="api"><div class="api__label">${v.label}</div><p class="api__text">${v.h1}</p><div class="api__chips">${v.chips.split(',').map(c=>`<span class="api__chip">${c.trim()}</span>`).join('')}</div></div>`},
+
+/* ── ait-success-rate ── */
+'ait-success-rate':{name:'앱인토스 — 71% 성공 지표 블록',fields:[
+  {id:'pct',label:'메인 수치',type:'text',default:'71%'},
+  {id:'headline',label:'헤드라인',type:'text',default:'1인 메이커 10명 중 7명이\n출시 3일 만에 첫 매출'},
+  {id:'sub',label:'보조 설명',type:'text',default:'배너 광고, 인앱결제로 내 아이디어를 빠르게 수익화하세요.'},
+  {id:'m1l',label:'지표 1 라벨',type:'text',default:'첫 매출까지 평균'},{id:'m1v',label:'지표 1 값',type:'text',default:'3일'},
+  {id:'m2l',label:'지표 2 라벨',type:'text',default:'1인 메이커 성공률'},{id:'m2v',label:'지표 2 값',type:'text',default:'71%'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.asr{font-family:var(--font);padding:56px 24px;background:var(--bg)}
+.asr__inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:600px){.asr__inner{grid-template-columns:1fr}}
+.asr__big{font-size:clamp(64px,12vw,96px);font-weight:900;color:var(--p);letter-spacing:-.05em;line-height:1}
+.asr__h{font-size:clamp(20px,3vw,26px);font-weight:800;color:var(--tx1);line-height:1.35;letter-spacing:-.025em;margin:12px 0;white-space:pre-line}
+.asr__sub{font-size:14px;color:var(--tx3);line-height:1.6}
+.asr__metrics{display:flex;flex-direction:column;gap:16px}
+.asr__metric{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--rL);padding:20px 24px}
+.asr__ml{font-size:12px;font-weight:600;color:var(--tx4);margin-bottom:4px}
+.asr__mv{font-size:28px;font-weight:900;color:var(--tx1);letter-spacing:-.03em}
+</style>
+<div class="asr"><div class="asr__inner"><div><div class="asr__big">${v.pct}</div><h2 class="asr__h">${v.headline}</h2><p class="asr__sub">${v.sub}</p></div><div class="asr__metrics"><div class="asr__metric"><div class="asr__ml">${v.m1l}</div><div class="asr__mv">${v.m1v}</div></div><div class="asr__metric"><div class="asr__ml">${v.m2l}</div><div class="asr__mv">${v.m2v}</div></div></div></div></div>`},
+
+/* ── ait-launch-days ── */
+'ait-launch-days':{name:'앱인토스 — 평균 5일 출시 타임라인',fields:[
+  {id:'headline',label:'헤드라인',type:'text',default:'미니앱 등록부터 출시까지 평균 5일'},
+  {id:'sub',label:'서브 텍스트',type:'text',default:'개발자가 아니어도 메이커가 돼요. 바이브코더를 위한 환경이 준비되어 있어요.'},
+  {id:'s1',label:'단계 1',type:'text',default:'아이디어 구체화'},{id:'d1',label:'기간 1',type:'text',default:'Day 1'},
+  {id:'s2',label:'단계 2',type:'text',default:'바이브코딩 개발'},{id:'d2',label:'기간 2',type:'text',default:'Day 2–3'},
+  {id:'s3',label:'단계 3',type:'text',default:'콘솔 등록 심사'},{id:'d3',label:'기간 3',type:'text',default:'Day 4'},
+  {id:'s4',label:'단계 4',type:'text',default:'출시 & 첫 매출'},{id:'d4',label:'기간 4',type:'text',default:'Day 5'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.ald{font-family:var(--font);padding:56px 24px;background:var(--bg)}
+.ald__head{text-align:center;margin-bottom:48px}
+.ald__h{font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--tx1);letter-spacing:-.03em;margin-bottom:12px}
+.ald__sub{font-size:15px;color:var(--tx3);line-height:1.6;max-width:500px;margin:0 auto}
+.ald__steps{display:grid;grid-template-columns:repeat(4,1fr);max-width:800px;margin:0 auto}
+@media(max-width:600px){.ald__steps{grid-template-columns:1fr 1fr;gap:24px 0}}
+.ald__step{text-align:center;padding:0 8px;position:relative}
+.ald__step:not(:last-child)::after{content:'';position:absolute;top:21px;left:60%;right:-8%;height:2px;background:var(--bd)}
+@media(max-width:600px){.ald__step::after{display:none}}
+.ald__dot{width:42px;height:42px;border-radius:50%;background:var(--p);color:#fff;font-size:15px;font-weight:800;display:grid;place-items:center;margin:0 auto 12px;box-shadow:0 0 0 6px color-mix(in srgb,var(--p) 12%,transparent)}
+.ald__sl{font-size:13px;font-weight:700;color:var(--tx1);margin-bottom:4px;line-height:1.35}
+.ald__sd{font-size:12px;font-weight:600;color:var(--p)}
+</style>
+<div class="ald"><div class="ald__head"><h2 class="ald__h">${v.headline}</h2><p class="ald__sub">${v.sub}</p></div><div class="ald__steps"><div class="ald__step"><div class="ald__dot">1</div><div class="ald__sl">${v.s1}</div><div class="ald__sd">${v.d1}</div></div><div class="ald__step"><div class="ald__dot">2</div><div class="ald__sl">${v.s2}</div><div class="ald__sd">${v.d2}</div></div><div class="ald__step"><div class="ald__dot">3</div><div class="ald__sl">${v.s3}</div><div class="ald__sd">${v.d3}</div></div><div class="ald__step"><div class="ald__dot">4</div><div class="ald__sl">${v.s4}</div><div class="ald__sd">${v.d4}</div></div></div></div>`},
+
+/* ── ait-vibe-feature ── */
+'ait-vibe-feature':{name:'앱인토스 — 바이브코딩 피처 4종',fields:[
+  {id:'headline',label:'헤드라인',type:'text',default:'개발을 몰라도 괜찮아요'},
+  {id:'sub',label:'서브 텍스트',type:'text',default:'Claude, Codex 스킬과 MCP. 바이브코더를 위한 환경을 제공해요.'},
+  {id:'c1e',label:'카드1 이모지',type:'text',default:'🤖'},{id:'c1t',label:'카드1 제목',type:'text',default:'AI 바이브코딩'},{id:'c1d',label:'카드1 설명',type:'text',default:'Claude·Codex MCP로 코딩 지식 없이도 앱 제작 가능'},
+  {id:'c2e',label:'카드2 이모지',type:'text',default:'⚙️'},{id:'c2t',label:'카드2 제목',type:'text',default:'로그인·인증 SDK'},{id:'c2d',label:'카드2 설명',type:'text',default:'복잡한 필수 기능도 SDK 한 줄로 구현'},
+  {id:'c3e',label:'카드3 이모지',type:'text',default:'🎨'},{id:'c3t',label:'카드3 제목',type:'text',default:'토스 UX 디자인'},{id:'c3d',label:'카드3 설명',type:'text',default:'토스 앱 같은 UI를 기본 제공 템플릿으로'},
+  {id:'c4e',label:'카드4 이모지',type:'text',default:'🎮'},{id:'c4t',label:'카드4 제목',type:'text',default:'H5 게임 지원'},{id:'c4d',label:'카드4 설명',type:'text',default:'HTML5 게임 즉시 출시 및 수익화 가능'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.avf{font-family:var(--font);padding:56px 24px;background:var(--bgc)}
+.avf__head{text-align:center;margin-bottom:40px}
+.avf__h{font-size:clamp(22px,4vw,30px);font-weight:800;color:var(--tx1);letter-spacing:-.03em;margin-bottom:10px}
+.avf__sub{font-size:15px;color:var(--tx3);line-height:1.6}
+.avf__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:700px;margin:0 auto}
+@media(max-width:540px){.avf__grid{grid-template-columns:1fr}}
+.avf__card{background:var(--bg);border:1px solid var(--bd);border-radius:var(--rXL);padding:24px 20px;transition:box-shadow .2s}
+.avf__card:hover{box-shadow:var(--shPop)}
+.avf__icon{font-size:28px;margin-bottom:12px}
+.avf__ct{font-size:16px;font-weight:700;color:var(--tx1);margin-bottom:6px;letter-spacing:-.01em}
+.avf__cd{font-size:13px;color:var(--tx3);line-height:1.55}
+</style>
+<div class="avf"><div class="avf__head"><h2 class="avf__h">${v.headline}</h2><p class="avf__sub">${v.sub}</p></div><div class="avf__grid"><div class="avf__card"><div class="avf__icon">${v.c1e}</div><div class="avf__ct">${v.c1t}</div><div class="avf__cd">${v.c1d}</div></div><div class="avf__card"><div class="avf__icon">${v.c2e}</div><div class="avf__ct">${v.c2t}</div><div class="avf__cd">${v.c2d}</div></div><div class="avf__card"><div class="avf__icon">${v.c3e}</div><div class="avf__ct">${v.c3t}</div><div class="avf__cd">${v.c3d}</div></div><div class="avf__card"><div class="avf__icon">${v.c4e}</div><div class="avf__ct">${v.c4t}</div><div class="avf__cd">${v.c4d}</div></div></div></div>`},
+
+/* ── ait-reach-banner ── */
+'ait-reach-banner':{name:'앱인토스 — 3천만 유저 도달 CTA 배너',fields:[
+  {id:'num',label:'유저 수',type:'text',default:'3,000만'},
+  {id:'headline',label:'헤드라인',type:'text',default:'내가 만든 미니앱으로 유저를 빠르게 만나요'},
+  {id:'sub',label:'서브 텍스트',type:'text',default:'스마트발송과 프로모션으로 하루 최대 10만 명에게 맞춤 푸시와 알림을 보낼 수 있어요.'},
+  {id:'cta',label:'CTA 텍스트',type:'text',default:'콘솔 가입하기 →'},
+  {id:'ctau',label:'CTA URL',type:'text',default:'https://apps-in-toss.toss.im/workspace'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.arb{${FULL_BLEED}background:linear-gradient(135deg,var(--p) 0%,#5ba2f7 100%);padding:72px 24px;text-align:center;font-family:var(--font)}
+.arb__num{font-size:clamp(48px,9vw,72px);font-weight:900;color:rgba(255,255,255,.2);letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+.arb__h{font-size:clamp(22px,4vw,32px);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1.3;margin-bottom:14px}
+.arb__sub{font-size:15px;color:rgba(255,255,255,.8);line-height:1.65;max-width:520px;margin:0 auto 32px}
+.arb__cta{display:inline-block;background:#fff;color:var(--p);font-size:15px;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;letter-spacing:-.01em;transition:opacity .15s}
+.arb__cta:hover{opacity:.9}
+</style>
+<div class="arb"><div class="arb__num">${v.num}</div><h2 class="arb__h">${v.headline}</h2><p class="arb__sub">${v.sub}</p><a class="arb__cta" href="${v.ctau}">${v.cta}</a></div>`},
+
+/* ── ait-maker-card ── */
+'ait-maker-card':{name:'앱인토스 — 메이커 스토리 3종 카드',fields:[
+  {id:'headline',label:'섹션 제목',type:'text',default:'누구나 미니앱을 만들 수 있어요'},
+  {id:'c1e',label:'카드1 이모지',type:'text',default:'👩‍🏫'},{id:'c1tag',label:'카드1 태그',type:'text',default:'바이브코딩'},{id:'c1t',label:'카드1 제목',type:'text',default:'바이브 코딩으로 게임 만든 학원 선생님'},{id:'c1d',label:'카드1 설명',type:'text',default:'개발 지식 없이 게임과 AI 면접 시뮬레이터를 출시한 실전 후기'},{id:'c1u',label:'카드1 URL',type:'text',default:'https://toss.im/apps-in-toss/blog/designprep'},
+  {id:'c2e',label:'카드2 이모지',type:'text',default:'👨‍💻'},{id:'c2tag',label:'카드2 태그',type:'text',default:'1인 개발자'},{id:'c2t',label:'카드2 제목',type:'text',default:'창업 3개월 차, 앱인토스에서 첫 수익을 만들다'},{id:'c2d',label:'카드2 설명',type:'text',default:'하루 5천 원에서 10만 원으로. 완벽보다 완성을 택한 과정'},{id:'c2u',label:'카드2 URL',type:'text',default:'https://toss.im/apps-in-toss/blog/groundcode'},
+  {id:'c3e',label:'카드3 이모지',type:'text',default:'🚀'},{id:'c3tag',label:'카드3 태그',type:'text',default:'비개발자'},{id:'c3t',label:'카드3 제목',type:'text',default:'비개발자가 2달 만에 앱 21개 출시'},{id:'c3d',label:'카드3 설명',type:'text',default:'7주 만에 미니앱 21개 출시하고 첫 수익까지 낸 방법'},{id:'c3u',label:'카드3 URL',type:'text',default:'https://toss.im/apps-in-toss/blog/robin-26-3-13'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.amc{font-family:var(--font);padding:56px 24px;background:var(--bg)}
+.amc__h{text-align:center;font-size:clamp(20px,3.5vw,28px);font-weight:800;color:var(--tx1);letter-spacing:-.03em;margin-bottom:36px}
+.amc__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto}
+@media(max-width:720px){.amc__grid{grid-template-columns:1fr}}
+.amc__card{border:1px solid var(--bd);border-radius:var(--rXL);padding:24px 20px;text-decoration:none;display:block;transition:box-shadow .15s,border-color .15s}
+.amc__card:hover{box-shadow:var(--shPop);border-color:var(--p)}
+.amc__icon{font-size:32px;margin-bottom:14px}
+.amc__tag{display:inline-block;background:var(--pt);color:var(--p);font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:10px}
+.amc__title{font-size:15px;font-weight:700;color:var(--tx1);line-height:1.4;margin-bottom:8px;letter-spacing:-.01em}
+.amc__desc{font-size:13px;color:var(--tx3);line-height:1.55}
+</style>
+<div class="amc"><h2 class="amc__h">${v.headline}</h2><div class="amc__grid"><a class="amc__card" href="${v.c1u}"><div class="amc__icon">${v.c1e}</div><div class="amc__tag">${v.c1tag}</div><div class="amc__title">${v.c1t}</div><div class="amc__desc">${v.c1d}</div></a><a class="amc__card" href="${v.c2u}"><div class="amc__icon">${v.c2e}</div><div class="amc__tag">${v.c2tag}</div><div class="amc__title">${v.c2t}</div><div class="amc__desc">${v.c2d}</div></a><a class="amc__card" href="${v.c3u}"><div class="amc__icon">${v.c3e}</div><div class="amc__tag">${v.c3tag}</div><div class="amc__title">${v.c3t}</div><div class="amc__desc">${v.c3d}</div></a></div></div>`},
+
+/* ── ait-faq ── */
+'ait-faq':{name:'앱인토스 — FAQ 아코디언',fields:[
+  {id:'headline',label:'섹션 제목',type:'text',default:'자주 묻는 질문'},
+  {id:'q1',label:'Q1',type:'text',default:'미니앱에서 어떻게 수익을 낼 수 있나요?'},{id:'a1',label:'A1',type:'text',default:'인앱광고, 인앱결제 등 다양한 수익화 방법을 제공해요. 발생한 광고 또는 판매 수익을 정산받을 수 있어요.'},
+  {id:'q2',label:'Q2',type:'text',default:'앱 개발을 몰라도 미니앱을 만들 수 있나요?'},{id:'a2',label:'A2',type:'text',default:'네, 가능해요. MCP, 스킬 등 바이브코더를 위한 개발 환경과 SDK를 지원하고 있어요.'},
+  {id:'q3',label:'Q3',type:'text',default:'어떤 종류의 앱을 출시할 수 있나요?'},{id:'a3',label:'A3',type:'text',default:'게임, 유틸리티, 콘텐츠, 쇼핑, 교육 등 다양한 카테고리의 미니앱을 출시할 수 있어요.'},
+  {id:'q4',label:'Q4',type:'text',default:'사업자 등록이 꼭 필요한가요?'},{id:'a4',label:'A4',type:'text',default:'사업자 등록 없이도 출시는 가능해요. 다만 수익화 기능 사용 시에는 사업자 등록이 필요해요.'},
+],template:v=>`${FONT_LINK}
+<style>${NAV_CSS}*{box-sizing:border-box;margin:0;padding:0}:root{${CSS_VARS}}
+.afq{font-family:var(--font);padding:56px 24px;background:var(--bg)}
+.afq__h{text-align:center;font-size:clamp(22px,3.5vw,28px);font-weight:800;color:var(--tx1);letter-spacing:-.03em;margin-bottom:40px}
+.afq__list{max-width:680px;margin:0 auto}
+.afq__item{border-bottom:1px solid var(--bd)}
+.afq__item:first-of-type{border-top:1px solid var(--bd)}
+input.afq__tog{display:none}
+.afq__label{display:flex;align-items:center;justify-content:space-between;padding:18px 4px;cursor:pointer;font-size:15px;font-weight:700;color:var(--tx1);gap:12px;letter-spacing:-.01em;user-select:none}
+.afq__arrow{font-size:12px;color:var(--tx4);transition:transform .2s;flex-shrink:0}
+input.afq__tog:checked~.afq__label .afq__arrow{transform:rotate(180deg)}
+.afq__body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+input.afq__tog:checked~.afq__body{max-height:200px}
+.afq__ans{padding:0 4px 18px;font-size:14px;color:var(--tx3);line-height:1.7}
+</style>
+<div class="afq"><h2 class="afq__h">${v.headline}</h2><div class="afq__list"><div class="afq__item"><input type="checkbox" class="afq__tog" id="afq1"><label class="afq__label" for="afq1">Q. ${v.q1}<span class="afq__arrow">▼</span></label><div class="afq__body"><p class="afq__ans">${v.a1}</p></div></div><div class="afq__item"><input type="checkbox" class="afq__tog" id="afq2"><label class="afq__label" for="afq2">Q. ${v.q2}<span class="afq__arrow">▼</span></label><div class="afq__body"><p class="afq__ans">${v.a2}</p></div></div><div class="afq__item"><input type="checkbox" class="afq__tog" id="afq3"><label class="afq__label" for="afq3">Q. ${v.q3}<span class="afq__arrow">▼</span></label><div class="afq__body"><p class="afq__ans">${v.a3}</p></div></div><div class="afq__item"><input type="checkbox" class="afq__tog" id="afq4"><label class="afq__label" for="afq4">Q. ${v.q4}<span class="afq__arrow">▼</span></label><div class="afq__body"><p class="afq__ans">${v.a4}</p></div></div></div></div>`},
 
 }; /* end BLOCK_DEFS */
 </script>
